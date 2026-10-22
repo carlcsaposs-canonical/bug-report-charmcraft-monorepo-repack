@@ -1,0 +1,17 @@
+type: charm
+platforms:
+  ubuntu@26.04:amd64:
+  ubuntu@26.04:arm64:
+
+parts:
+  charm-poetry:
+    plugin: poetry
+    source: ..
+    source-subdir: kubernetes/
+  files:
+    plugin: dump
+    source: ..
+    source-subdir: kubernetes/
+    override-build: |
+      craftctl default
+      exit 1
